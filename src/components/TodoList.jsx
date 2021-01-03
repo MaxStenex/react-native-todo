@@ -1,6 +1,6 @@
 import React from "react";
 import { ScrollView } from "react-native";
-import { Todo } from "./";
+import Todo from "./Todo";
 
 const TodoList = ({ todos, deleteTodo, toggleTodo }) => {
   return (
