@@ -22,8 +22,7 @@ const filters = [
   },
 ];
 
-const Header = () => {
-  const [currentFilter, setCurrentFilter] = useState("All");
+const Header = ({ currentFilter, setCurrentFilter }) => {
   const changeFilter = (item) => {
     setCurrentFilter(item.value);
   };

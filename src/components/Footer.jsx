@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Pressable, StyleSheet, Text, TextInput, View } from "react-native";
 
-const Footer = () => {
+const Footer = ({ addTodo }) => {
   const [text, setText] = useState("");
 
   return (
@@ -13,6 +13,14 @@ const Footer = () => {
       />
       <Pressable
         style={({ pressed }) => [styles.addButton, pressed && styles.addButtonPressed]}
+        onPress={() => {
+          if (text.trim() !== "") {
+            addTodo(text);
+            setText("");
+          } else {
+            return;
+          }
+        }}
       >
         {({ pressed }) => (
           <Text style={pressed ? styles.addButtonTextPressed : styles.addButtonText}>

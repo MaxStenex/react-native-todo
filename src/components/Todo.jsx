@@ -2,14 +2,26 @@ import React from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import { Fontisto } from "@expo/vector-icons";
 
-const Todo = ({ text, isDone, id }) => {
+const Todo = ({ text, isDone, id, deleteTodo, toggleTodo }) => {
   return (
     <View style={styles.container}>
       <View style={styles.main}>
         {isDone ? (
-          <Fontisto style={styles.icon} name="checkbox-active" size={24} color="purple" />
+          <Fontisto
+            style={styles.icon}
+            name="checkbox-active"
+            size={30}
+            color="purple"
+            onPress={() => toggleTodo(id)}
+          />
         ) : (
-          <Fontisto style={styles.icon} name="checkbox-passive" size={24} color="black" />
+          <Fontisto
+            style={styles.icon}
+            name="checkbox-passive"
+            size={30}
+            color="black"
+            onPress={() => toggleTodo(id)}
+          />
         )}
         <Text style={isDone ? styles.doneText : styles.text} textBreakStrategy="balanced">
           {text}
@@ -23,6 +35,7 @@ const Todo = ({ text, isDone, id }) => {
             backgroundColor: pressed ? "#ff6f6f" : "white",
           },
         ]}
+        onPress={() => deleteTodo(id)}
       >
         <Text>Delete</Text>
       </Pressable>
@@ -54,7 +67,9 @@ const styles = StyleSheet.create({
   icon: {
     marginRight: 7,
   },
-  text: {},
+  text: {
+    color: "black",
+  },
   doneText: {
     color: "grey",
     textDecorationLine: "line-through",
