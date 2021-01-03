@@ -8,7 +8,7 @@ const filters = [
   {
     id: "0",
     value: "All",
-    icon: <Ionicons name="ios-list-sharp" size={35} color="#9B70C8" />,
+    icon: <Ionicons name="ios-list-sharp" size={35} color="black" />,
   },
   {
     id: "1",
@@ -32,8 +32,8 @@ const Header = () => {
     <Pressable
       style={({ pressed }) => [
         item.value === currentFilter ? activeMenuItem : styles.menuItem,
-        {
-          backgroundColor: pressed && item.value !== currentFilter ? "#e1e1e1" : "white",
+        pressed && {
+          backgroundColor: item.value !== currentFilter ? "#e1e1e1" : "#F1E3FF",
         },
       ]}
       onPress={() => changeFilter(item)}
@@ -63,16 +63,13 @@ const styles = StyleSheet.create({
     padding: 15,
     flex: 1,
     height: "100%",
-    backgroundColor: "#fafafa",
+    backgroundColor: "#fff",
     borderWidth: 1,
     borderColor: "transparent",
     borderTopWidth: 0,
   },
   menuItemActive: {
-    backgroundColor: "#fff",
-    borderWidth: 1,
-    borderColor: "black",
-    borderTopWidth: 0,
+    backgroundColor: "#F1E3FF",
   },
   itemText: {
     marginLeft: 7,
